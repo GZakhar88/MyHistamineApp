@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
-const URL = "http://localhost:8080/ingredients?name=";
+const URL = "http://localhost:8080/ingredients/";
 import Ingredient from "./Ingredient";
 
 export default function App() {
@@ -32,7 +32,7 @@ export default function App() {
         style={styles.input}
         placeholder="What are you looking for?"
         keyboardType="default"
-        onChangeText={(text) => setInput(text)}
+        onChangeText={(text) => setInput(text.toLocaleLowerCase())}
         value={input}
       />
       <Button

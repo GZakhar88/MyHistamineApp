@@ -1,52 +1,49 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
-const URL = "http://localhost:8080/ingredients/";
-import Ingredient from "./Ingredient";
+import { StyleSheet, Text, View } from "react-native";
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Tabs from "./navigation/tabs";
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [input, setInput] = React.useState("");
-  const [result, setResult] = React.useState({});
-
-  async function getIngredient(input) {
-    try {
-      const fetchItem = await fetch(URL + input, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
-      const response = await fetchItem.json();
-      response === undefined ? setResult(undefined) : setResult(response[0]);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>My Histamine App!</Text>
-      <Ingredient props={result} />
-      <TextInput
-        style={styles.input}
-        placeholder="What are you looking for?"
-        keyboardType="default"
-        onChangeText={(text) => setInput(text.toLocaleLowerCase())}
-        value={input}
-      />
-      <Button
-        disabled={input !== "" ? false : true}
-        style={styles.button}
-        title="Search"
-        onPress={() => {
-          getIngredient(input);
-          Alert.alert(`You just search about ${input}`);
-          setInput("");
-        }}
-      />
+    <NavigationContainer>
+      <Tab.Navigator>
+        {}
+        <Tab.Screen name={"Home"} component={HomeScreen}></Tab.Screen>
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
 
-      <StatusBar style="auto" />
+function HomeScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Home!</Text>
+    </View>
+  );
+}
+function AddScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Add!</Text>
+    </View>
+  );
+}
+function ListScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>List!</Text>
+    </View>
+  );
+}
+function EditScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Edit!</Text>
     </View>
   );
 }
@@ -77,3 +74,28 @@ const styles = StyleSheet.create({
     height: 100,
   },
 });
+
+/* 
+<View style={styles.container}>
+      <Text style={styles.text}>My Histamine App!</Text>
+      <Ingredient props={result} />
+      <TextInput
+        style={styles.input}
+        placeholder="What are you looking for?"
+        keyboardType="default"
+        onChangeText={(text) => setInput(text.toLocaleLowerCase())}
+        value={input}
+      />
+      <Button
+        disabled={input !== "" ? false : true}
+        style={styles.button}
+        title="Search"
+        onPress={() => {
+          getIngredient(input);
+          Alert.alert(`You just search about ${input}`);
+          setInput("");
+        }}
+      />
+
+      <StatusBar style="auto" />
+    </View> */

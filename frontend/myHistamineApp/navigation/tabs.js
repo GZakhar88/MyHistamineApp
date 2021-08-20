@@ -12,14 +12,13 @@ const Tabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: "#e91e63",
-        tabBarStyle: { position: "absolute" },
+        tabBarActiveTintColor: "#34eba8",
       }}
     >
       <Tab.Screen name="Add" component={addScreen} />
-      <Tab.Screen name="Edit" component={editScreen} />
-      <Tab.Screen name="List All" component={listAllScreen} />
+      {/*  <Tab.Screen name="Edit" component={editScreen} /> */}
       <Tab.Screen name="Search" component={searchScreen} />
+      <Tab.Screen name="List All" component={listAllScreen} />
     </Tab.Navigator>
   );
 };

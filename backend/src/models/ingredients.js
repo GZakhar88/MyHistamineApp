@@ -2,7 +2,9 @@ import { db } from "../data/connection";
 
 export const ingredients = {
   async allIngredients() {
-    const allIngredient = await db.query("SELECT * FROM ingredient;");
+    const allIngredient = await db.query(
+      "SELECT * FROM ingredient ORDER BY name ASC;"
+    );
     return allIngredient.results;
   },
   async findingredientByName(input) {

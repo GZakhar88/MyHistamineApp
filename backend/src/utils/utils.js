@@ -18,6 +18,8 @@ export const utils = {
         );
       } else if (!isNumber(input.tolerancelevel)) {
         throw new Error("Tolerance level need to be a number!");
+      } else if (isNumber(input.name)) {
+        throw new Error("Ingredient name need to be a string!");
       } else if (isEmpty(input.name) && isEmpty(input.tolerancelevel)) {
         throw new Error("Item name and tolerance level are required!");
       } else if (

@@ -7,7 +7,9 @@
     "test": "jest --watchAll",
     "test:ci": "jest --ci --collectCoverage --reporters=default",
     "test:cover": "jest --collectCoverage",
-    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node --require dotenv/config src/index.js"
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node --require dotenv/config src/index.js",
+    "build": "babel src -d dist",
+    "serve": "node -r dotenv/config dist/index.js"
   },
   "type": "module",
   "author": "Gabor Zakhar (Zaza)",
@@ -22,9 +24,10 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
-    "@babel/core": "^7.14.8",
+    "@babel/core": "^7.15.0",
     "@babel/node": "^7.8.7",
-    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-env": "^7.15.0",
+    "babel-jest": "^27.0.6",
     "jest": "^27.0.6"
   }
 }

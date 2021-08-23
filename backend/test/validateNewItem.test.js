@@ -1,5 +1,7 @@
-import { utils } from "../src/utils/utils";
+// const utils = require("../src/utils/utils");
+// const ingredients = require("../src/models/ingredients");
 import { ingredients } from "../src/models/ingredients";
+import { utils } from "../src/utils/utils";
 
 jest.mock("../src/models/ingredients");
 

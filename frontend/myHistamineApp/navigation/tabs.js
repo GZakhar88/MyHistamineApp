@@ -18,7 +18,7 @@ const Tabs = () => {
       <Tab.Screen name="Add" component={addScreen} />
       {/*  <Tab.Screen name="Edit" component={editScreen} /> */}
       <Tab.Screen name="Search" component={searchScreen} />
-      <Tab.Screen name="List All" component={listAllScreen} />
+      <Tab.Screen name="All ingredient" component={listAllScreen} />
     </Tab.Navigator>
   );
 };

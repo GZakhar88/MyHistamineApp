@@ -1,32 +1,57 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  SafeAreaView,
+  StyleSheet,
+  FlatList,
+  StatusBar,
+  Alert,
+} from "react-native";
+import { getAllIngredient } from "../functions/getAllIngredient";
+import ListItem from "../components/listItem";
 
 export default function listAllScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>List All Item screen</Text>
-      <Button
-        style={styles.button}
-        title="Click Me"
+  const [list, setList] = useState(null);
+  const [selectedId, setSelectedId] = useState(null);
+
+  useEffect(() => {
+    getAllIngredient({ setList });
+  }, [list]);
+
+  const renderItem = ({ item }) => {
+    const backgroundColor = item.id === selectedId ? "#3b606e" : "white";
+    const color = item.id === selectedId ? "white" : "black";
+
+    return (
+      <ListItem
+        item={item}
         onPress={() => {
-          Alert.alert(`Button clicked`);
+          setSelectedId(item.id),
+            Alert.alert(
+              "You clicked on: ",
+              `${item.id}, ${item.name}, ${item.tolerancelevel}`
+            );
         }}
+        backgroundColor={{ backgroundColor }}
+        textColor={{ color }}
       />
-      <StatusBar style="auto" />
-    </View>
+    );
+  };
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={list}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        extraData={selectedId}
+      />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  text: {
-    margin: 10,
-    fontSize: 20,
-  },
   container: {
     flex: 1,
-    backgroundColor: "green",
-    alignItems: "center",
-    justifyContent: "center",
+    marginTop: StatusBar.currentHeight || 0,
   },
 });

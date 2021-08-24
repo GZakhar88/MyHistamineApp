@@ -37,7 +37,7 @@ export const utils = {
         throw new Error("Item is already exist!");
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
       throw error;
     }
   },

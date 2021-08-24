@@ -15,10 +15,22 @@ const Tabs = () => {
         tabBarActiveTintColor: "#34eba8",
       }}
     >
-      <Tab.Screen name="Add" component={addScreen} />
+      <Tab.Screen
+        name="Add a new Item"
+        component={addScreen}
+        options={{ unmountOnBlur: true }}
+      />
       {/*  <Tab.Screen name="Edit" component={editScreen} /> */}
-      <Tab.Screen name="Search" component={searchScreen} />
-      <Tab.Screen name="All ingredient" component={listAllScreen} />
+      <Tab.Screen
+        name="Search"
+        component={searchScreen}
+        options={{ unmountOnBlur: true }}
+      />
+      <Tab.Screen
+        name="All ingredient"
+        component={listAllScreen}
+        options={{ unmountOnBlur: true }}
+      />
     </Tab.Navigator>
   );
 };

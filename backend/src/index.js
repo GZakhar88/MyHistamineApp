@@ -1,6 +1,7 @@
 import config from "./config";
 import express, { json, urlencoded } from "express";
 import { ingredients } from "./models/ingredients";
+import { utils } from "./utils/utils";
 const app = express();
 const PORT = config.port;
 app.use(json());
@@ -37,10 +38,11 @@ app.get("/ingredients/:name", async (req, res) => {
 
 app.post("/ingredients", async (req, res) => {
   try {
+    await utils.validateNewItem(req.body);
     const result = await ingredients.addIngredient(req.body);
     res.status(200).json(result);
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
     res.status(400).json({ error: error.message });
   }
 });

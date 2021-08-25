@@ -9,7 +9,7 @@ import {
 import { getAllIngredient } from "../functions/getAllIngredient";
 import ListItem from "../components/listItem";
 
-export default function listAllScreen() {
+export default function listAllScreen({ navigation }) {
   const [list, setList] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
 

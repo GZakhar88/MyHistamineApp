@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
 const URL = "http://localhost:8080/ingredients/";
 import Ingredient from "../Ingredient";
 
-export default function searchScreen() {
+export default function searchScreen({ navigation }) {
   const [input, setInput] = React.useState("");
   const [result, setResult] = React.useState({});
 
@@ -12,10 +12,7 @@ export default function searchScreen() {
     try {
       const fetchItem = await fetch(URL + input, {
         method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-type": "application/json" },
       });
       const response = await fetchItem.json();
       response === undefined ? setResult(undefined) : setResult(response[0]);

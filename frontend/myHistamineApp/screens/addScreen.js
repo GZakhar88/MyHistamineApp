@@ -101,6 +101,7 @@ export default function addScreen({ navigation }) {
           iconStyle={{ color: "white" }}
           rightButtonBackgroundColor="#ed8674"
           leftButtonBackgroundColor="#b8e87d"
+          rounded={true}
         />
         <Button
           style={styles.button}
@@ -121,11 +122,11 @@ const styles = StyleSheet.create({
   text: {
     marginTop: 20,
     marginBottom: 10,
-    fontSize: 10,
+    fontSize: 12,
   },
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#fff",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-evenly",

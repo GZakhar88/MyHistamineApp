@@ -33,11 +33,7 @@ const Tabs = () => {
         component={addScreen}
         options={{ unmountOnBlur: true }}
       />
-      <Tab.Screen
-        name="Search"
-        component={searchScreen}
-        options={{ unmountOnBlur: true }}
-      />
+      <Tab.Screen name="Search" component={searchScreen} />
       <Tab.Screen
         name="All ingredient"
         component={listAllScreen}

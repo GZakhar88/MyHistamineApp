@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "#e8e8e8",
+    backgroundColor: "white",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-evenly",
